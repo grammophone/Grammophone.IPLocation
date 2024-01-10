@@ -15,4 +15,4 @@ whose purpose is to create the corresponding `ILocationprovider`. The factory wi
 
 Consequently, the library contains a corresponding `AggregateLocationProviderFactory` implementation of `ILocationProviderFactory` to create `AggreegateLocationProvider` instances. 
 
-This labrary has no project dependencies.
+This library has no project dependencies.
