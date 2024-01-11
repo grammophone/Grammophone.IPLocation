@@ -18,6 +18,6 @@ namespace Grammophone.IPLocation.Models
 		/// <summary>
 		/// The ISO 3166-2 code of the subdivision, if it exists, else null.
 		/// </summary>
-		public string IsoCide { get; set; }
+		public string IsoCode { get; set; }
 	}
 }

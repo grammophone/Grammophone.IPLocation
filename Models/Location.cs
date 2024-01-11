@@ -12,7 +12,7 @@ namespace Grammophone.IPLocation.Models
 	{
 		#region Private fields
 
-		private IList<Subdivision> subdivisions;
+		private IReadOnlyList<Subdivision> subdivisions;
 
 		#endregion
 
@@ -59,7 +59,7 @@ namespace Grammophone.IPLocation.Models
 		/// <summary>
 		/// The collection of subdivisions of the location.
 		/// </summary>
-		public IList<Subdivision> Subdivisions
+		public IReadOnlyList<Subdivision> Subdivisions
 		{
 			get
 			{
