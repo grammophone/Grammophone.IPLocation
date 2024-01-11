@@ -10,6 +10,12 @@ namespace Grammophone.IPLocation.Models
 	[Serializable]
 	public class Location
 	{
+		#region Private fields
+
+		private IList<Subdivision> subdivisions;
+
+		#endregion
+
 		/// <summary>
 		/// Optional city of the location, if found, else null.
 		/// </summary>
@@ -49,5 +55,36 @@ namespace Grammophone.IPLocation.Models
 		/// The raw rsponse from the provider.
 		/// </summary>
 		public string Response { get; set; }
+
+		/// <summary>
+		/// The collection of subdivisions of the location.
+		/// </summary>
+		public IList<Subdivision> Subdivisions
+		{
+			get
+			{
+				return subdivisions ??= new List<Subdivision>();
+			}
+			set
+			{
+				if (value == null) throw new ArgumentNullException(nameof(value));
+
+				subdivisions = value;
+
+				if (subdivisions.Count > 0)
+				{
+					this.LastSubdivision = subdivisions[subdivisions.Count - 1];
+				}
+				else
+				{
+					this.LastSubdivision = null;
+				}
+			}
+		}
+
+		/// <summary>
+		/// The last <see cref="Subdivision"/> in <see cref="Subdivisions"/>.
+		/// </summary>
+		public Subdivision LastSubdivision { get; private set; }
 	}
 }
