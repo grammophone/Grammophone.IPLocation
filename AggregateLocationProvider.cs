@@ -21,7 +21,7 @@ namespace Grammophone.IPLocation
 		/// <param name="locationProviders"></param>
 		/// <exception cref="ArgumentNullException"></exception>
 		/// <exception cref="ArgumentException"></exception>
-		public AggregateLocationProvider(IEnumerable<ILocationProvider> locationProviders)
+		public AggregateLocationProvider(ILocationProvider[] locationProviders)
 		{
 			if (locationProviders == null) throw new ArgumentNullException(nameof(locationProviders));
 			if (!locationProviders.Any()) throw new ArgumentException(nameof(locationProviders), "The locationProvider collection must not be empty.");

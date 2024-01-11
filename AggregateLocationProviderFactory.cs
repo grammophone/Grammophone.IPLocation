@@ -16,7 +16,7 @@ namespace Grammophone.IPLocation
 		/// Create.
 		/// </summary>
 		/// <param name="locationProviderFactories">The factories used to construct an <see cref="AggregateLocationProvider"/>.</param>
-		public AggregateLocationProviderFactory(IEnumerable<ILocationProviderFactory> locationProviderFactories)
+		public AggregateLocationProviderFactory(ILocationProviderFactory[] locationProviderFactories)
 		{
 			if (locationProviderFactories == null) throw new ArgumentNullException(nameof(locationProviderFactories));
 			if (!locationProviderFactories.Any()) throw new ArgumentException("The collection of provider factories must not be empty.", nameof(locationProviderFactories));
@@ -39,7 +39,7 @@ namespace Grammophone.IPLocation
 
 		/// <inheritdoc/>
 		public ILocationProvider CreateLocationProvider()
-			=> new AggregateLocationProvider(this.LocationProviderFactories.Select(f => f.CreateLocationProvider()));
+			=> new AggregateLocationProvider(this.LocationProviderFactories.Select(f => f.CreateLocationProvider()).ToArray());
 
 		#endregion
 	}
